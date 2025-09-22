@@ -1,25 +1,23 @@
-# arco-design-color
+# ArcoDesign Color
 
 [![npm](https://img.shields.io/npm/v/arco-design-color)](https://www.npmjs.com/package/arco-design-color)
 
-TypeScript version of @arco-design/color.
-
 ArcoDesign Color Utils.
 
-For a given color, a gradient swatch containing ten colors is generated with an algorithm. This works for both light and dark modes.
+根据给定颜色通过算法生成指定包含十个颜色的梯度色板，也可生成暗色模式下包含十个颜色的色板。
 
 ## Usage
 
 ```bash
-pnpm i arco-design-color
+npm i arco-design-color
 ```
 
 ```js
-import { generate, getPresetColors } from 'arco-design-color';
+import { generate, presetColor } from 'arco-design-color';
 
 console.log(generate('#123456'));
 
-console.log(getPresetColors());
+console.log(presetColor);
 // {
 //   red: {...},
 //   orangered: {...},
@@ -44,22 +42,23 @@ console.log(getPresetColors());
 
 #### options.index {number | 1-10}
 
-Index (starting from 1) of the gradient colors to be generated.
+生成 10 个梯度色中的第几个颜色。
 
 #### options.list {boolean}
 
-Whether to generate color array containing the ten colors.
+生成包含十个颜色的梯度颜色数组。
 
 #### options.dark
 
-Whether to generate colors for dark mode.
+生成暗色色板的颜色。
 
 #### options.format {'hex' | 'rgb' | 'hsl'}
 
-Color format.
+生成颜色的格式。
+
 ### getPresetColors {Function}
 
-Contains 14 preset sets of colors.
+包含了预设的 14 组颜色，包括一组中性灰。
 
 * `red`
 * `orangered`
@@ -86,7 +85,7 @@ console.log(red.primary);
 
 ### getRgbStr(color: string)
 
-For a given color, get the r, g, b value in string
+获得指定颜色的三通道 r, g, b 字符串。
 
 ```js
 getRgbStr('#F53F3F') // 245,63,63

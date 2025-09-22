@@ -1,0 +1,44 @@
+{
+  "name": "arco-design-color",
+  "version": "0.0.1-beta.1",
+  "description": "TypeScript version of @arco-design/color",
+  "author": "lhlyu",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lhlyu/arco-design-color.git"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "fmt": "prettier --write ./src",
+    "test": "vitest run",
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "pub": "bash scripts/publish.sh"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "package.json",
+    "README.md"
+  ],
+  "keywords": [
+    "ArcoDesign",
+    "Color",
+    "utils",
+    "typescript"
+  ],
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "prettier-plugin-organize-imports": "^4.2.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "color": "^5.0.2"
+  }
+}

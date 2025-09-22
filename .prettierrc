@@ -1,0 +1,19 @@
+{
+  "tabWidth": 4,
+  "useTabs": false,
+  "semi": false,
+  "singleQuote": true,
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "trailingComma": "none",
+  "arrowParens": "avoid",
+  "plugins": ["prettier-plugin-organize-imports"],
+  "overrides": [
+    {
+      "files": ["*.yaml", "*.yml", "*.json"],
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ]
+}

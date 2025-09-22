@@ -11,7 +11,7 @@ For a given color, a gradient swatch containing ten colors is generated with an 
 ## Usage
 
 ```bash
-pnpm i arco-design-color
+pnpm add arco-design-color
 ```
 
 ```js

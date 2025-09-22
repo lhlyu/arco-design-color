@@ -9,7 +9,7 @@ ArcoDesign Color Utils.
 ## Usage
 
 ```bash
-npm i arco-design-color
+npm add arco-design-color
 ```
 
 ```js

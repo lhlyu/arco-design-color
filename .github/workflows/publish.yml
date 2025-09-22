@@ -32,7 +32,7 @@ jobs:
           cache: 'pnpm'
 
       - name: 构建代码
-        run: pnpm build:npm
+        run: pnpm build
 
       - name: 发布版本
         run: pnpm pub

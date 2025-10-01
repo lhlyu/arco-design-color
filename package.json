@@ -1,6 +1,6 @@
 {
   "name": "arco-design-color",
-  "version": "0.0.2-beta.3",
+  "version": "0.0.2",
   "description": "TypeScript version of @arco-design/color",
   "author": "lhlyu",
   "license": "MIT",

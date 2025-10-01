@@ -31,15 +31,14 @@ jobs:
 
       - name: 获取当前的版本号
         run: |
-          echo "version=$(grep -o '"version": *"[^"]*"' package.json | awk -F'"' '{print $4}')" >> "$GITHUB_ENV"
-
-      - name: 是否是预发布
-        run: |
-          echo "prerelease=$([[ ${{ env.version }} == *-* ]] && echo 'true' || echo 'false')" >> "$GITHUB_ENV"
+          echo "version=$(jq -r '.version' package.json)" >> "$GITHUB_ENV"
+          echo "tag=$(jq -r '.version | (capture("-(?<tag>[^.]+)") // {}) | .tag // "latest"' package.json)" >> "$GITHUB_ENV"
+          echo "prerelease=$(jq -r '.version | test("-")' package.json)" >> "$GITHUB_ENV"
 
       - name: 打印信息
         run: |
           echo "version: ${{ env.version }}"
+          echo "tag: ${{ env.tag }}"
           echo "prerelease: ${{ env.prerelease }}"
 
       - name: 安装依赖
@@ -49,7 +48,7 @@ jobs:
         run: pnpm build
 
       - name: 发布版本
-        run: pnpm publish --provenance --no-git-checks --access=public
+        run: pnpm publish --provenance --no-git-checks --access=public --tag ${{ env.tag }}
         env:
           NODE_AUTH_TOKEN: '${{secrets.NPM_AUTH_TOKEN}}'
 

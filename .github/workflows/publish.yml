@@ -29,17 +29,6 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           cache: 'pnpm'
 
-      - name: 安装依赖
-        run: pnpm i
-
-      - name: 构建代码
-        run: pnpm build
-
-      - name: 发布版本
-        run: pnpm publish --provenance --no-git-checks --access=public
-        env:
-          NODE_AUTH_TOKEN: '${{secrets.NPM_AUTH_TOKEN}}'
-
       - name: 获取当前的版本号
         run: |
           echo "version=$(grep -o '"version": *"[^"]*"' package.json | awk -F'"' '{print $4}')" >> "$GITHUB_ENV"
@@ -50,7 +39,19 @@ jobs:
 
       - name: 打印信息
         run: |
-          echo "::notice::version=${{ env.version }} prerelease=${{ env.prerelease }}
+          echo "version: ${{ env.version }}"
+          echo "prerelease: ${{ env.prerelease }}"
+
+      - name: 安装依赖
+        run: pnpm i
+
+      - name: 构建代码
+        run: pnpm build
+
+      - name: 发布版本
+        run: pnpm publish --provenance --no-git-checks --access=public
+        env:
+          NODE_AUTH_TOKEN: '${{secrets.NPM_AUTH_TOKEN}}'
 
       - name: 打个标签
         uses: ncipollo/release-action@v1

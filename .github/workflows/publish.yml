@@ -14,28 +14,27 @@ jobs:
 
     steps:
       - name: 检出代码
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+
+      - name: 设置Node的版本
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: 'pnpm'
 
       - name: 安装Pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: 10
 
       - name: 安装依赖
-        run: pnpm i --no-frozen-lockfile --shamefully-hoist
-
-      - name: 设置Node的版本
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          registry-url: 'https://registry.npmjs.org/'
-          cache: 'pnpm'
+        run: pnpm i
 
       - name: 构建代码
         run: pnpm build
 
       - name: 发布版本
-        run: pnpm pub
+        run: pnpm publish --no-git-checks --access=public
         env:
           NODE_AUTH_TOKEN: '${{secrets.NPM_AUTH_TOKEN}}'
 
@@ -49,8 +48,7 @@ jobs:
 
       - name: 打印信息
         run: |
-          echo "version: ${{ env.version }}"
-          echo "prerelease: ${{ env.prerelease }}"
+          echo "::notice::version=${{ env.version }} prerelease=${{ env.prerelease }}
 
       - name: 打个标签
         uses: ncipollo/release-action@v1

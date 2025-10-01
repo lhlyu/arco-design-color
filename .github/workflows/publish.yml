@@ -25,6 +25,7 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22
+          registry-url: 'https://registry.npmjs.org'
           cache: 'pnpm'
 
       - name: 安装依赖
@@ -34,7 +35,7 @@ jobs:
         run: pnpm build
 
       - name: 发布版本
-        run: pnpm publish --no-git-checks --access=public
+        run: pnpm publish --provenance --no-git-checks --access=public
         env:
           NODE_AUTH_TOKEN: '${{secrets.NPM_AUTH_TOKEN}}'
 

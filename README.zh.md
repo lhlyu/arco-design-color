@@ -13,11 +13,11 @@ npm add arco-design-color
 ```
 
 ```js
-import { generate, presetColor } from 'arco-design-color';
+import { generate, getPresetColors } from 'arco-design-color';
 
 console.log(generate('#123456'));
 
-console.log(presetColor);
+console.log(getPresetColors());
 // {
 //   red: {...},
 //   orangered: {...},

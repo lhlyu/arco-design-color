@@ -1,6 +1,9 @@
 # ArcoDesign Color
 
 [![npm](https://img.shields.io/npm/v/arco-design-color)](https://www.npmjs.com/package/arco-design-color)
+![Last Commit](https://img.shields.io/github/last-commit/lhlyu/arco-design-color)
+
+[English Doc](README.md)
 
 ArcoDesign Color Utils.
 

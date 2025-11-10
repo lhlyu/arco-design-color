@@ -1,6 +1,9 @@
 # arco-design-color
 
 [![npm](https://img.shields.io/npm/v/arco-design-color)](https://www.npmjs.com/package/arco-design-color)
+![Last Commit](https://img.shields.io/github/last-commit/lhlyu/arco-design-color)
+
+[中文文档](README.zh.md)
 
 TypeScript version of @arco-design/color.
 
